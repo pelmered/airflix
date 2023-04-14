@@ -10,11 +10,14 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
+use App\Application;
 
-$app = new Illuminate\Foundation\Application(
+$app = (new Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
-);
+));
 
+// Set up our custom App path
+$app->useAppPath($app->basePath('src/App'));
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -28,12 +31,12 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    App\Http\Kernel::class
+    App\HttpKernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    App\Console\Kernel::class
+    App\ConsoleKernel::class
 );
 
 $app->singleton(
