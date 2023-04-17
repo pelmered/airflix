@@ -41,7 +41,7 @@ Setup like a simple Laravel project. See documentation here: https://laravel.com
 
 ## Usage
 
-Load the Postman collection from the `postman` folder and run the requests.
+Load the [Postman collection](https://github.com/pelmered/airflix/blob/main/postman/AirFlix.postman_collection.json) from the `postman` folder and run the requests.
 
 ## Tests
 
