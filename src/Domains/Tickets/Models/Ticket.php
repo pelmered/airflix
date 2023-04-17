@@ -52,4 +52,17 @@ class Ticket extends Model
 
     protected $primaryKey = 'uuid';
 
+    protected $fillable = [
+        'seat_number',
+    ];
+
+    public function flight(): BelongsTo
+    {
+        return $this->belongsTo(Flight::class, 'flight_number', 'flight_number');
+    }
+
+    public function passenger(): BelongsTo
+    {
+        return $this->belongsTo(Passenger::class);
+    }
 }

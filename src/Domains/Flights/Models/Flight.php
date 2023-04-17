@@ -58,4 +58,9 @@ class Flight extends Model
 
     protected $primaryKey = 'uuid';
 
+    public function tickets(): hasMany
+    {
+        return $this->hasMany(Ticket::class, 'flight_number', 'flight_number');
+    }
+
 }

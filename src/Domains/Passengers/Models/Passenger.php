@@ -63,4 +63,8 @@ class Passenger extends Model
 
     protected $primaryKey = 'uuid';
 
+    public function tickets(): hasMany
+    {
+        return $this->hasMany(Ticket::class, 'uuid');
+    }
 }
