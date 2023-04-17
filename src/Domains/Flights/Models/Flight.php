@@ -63,4 +63,39 @@ class Flight extends Model
         return $this->hasMany(Ticket::class, 'flight_number', 'flight_number');
     }
 
+    /**
+     * @throws NoAvailableSeatsException
+     */
+    public function getRandomFreeSeat(): int
+    {
+        $freeSeats = $this->getAvailableSeats();
+
+        if(empty($freeSeats)) {
+            throw new NoAvailableSeatsException();
+        }
+
+        return $freeSeats[array_rand($freeSeats)];
+    }
+
+    public function getAvailableSeats(): array
+    {
+        $allSeats = range(1, $this->no_of_seats);
+        $occupiedSeats = $this->tickets()
+                              ->where('status', '=', TicketStatus::CONFIRMED)
+                              ->get()
+                              ->pluck('seat_number')
+                              ->toArray();
+
+        return array_values(array_diff($allSeats, $occupiedSeats));
+    }
+
+    public function isSeatValid($seatNumber): bool
+    {
+        return $seatNumber > 0 && $seatNumber <= $this->no_of_seats;
+    }
+
+    public function isSeatAvailable($seatNumber): bool
+    {
+        return in_array($seatNumber, $this->getAvailableSeats(), true);
+    }
 }

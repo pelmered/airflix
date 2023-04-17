@@ -16,8 +16,8 @@ class TicketData extends Data
     public function __construct(
         public ?FlightData $flight,
         public ?PassengerData $passenger,
-        public ?int $seat_number,
-        public ?int $price,
+        public ?int $seat_number = null,
+        public ?int $price = null,
         public ?string $uuid = null,
         public ?string $status = TicketStatus::CONFIRMED,
         public ?string $updated_at = null,
