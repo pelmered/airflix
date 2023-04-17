@@ -19,14 +19,6 @@ use Tests\TestCase;
 
 class TicketTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function test_that_true_is_true(): void
-    {
-        $this->assertTrue(true);
-    }
-
     public function setUp(): void
     {
         parent::setUp();
@@ -67,13 +59,38 @@ class TicketTest extends TestCase
     }
 
     /**
-     * @throws SeatNotAvailableException
-     * @throws NoAvailableSeatsException
      * @throws BindingResolutionException
-     * @throws NotPersistedApiException
-     * @throws SeatInvalidException
+     * @throws NoAvailableSeatsException
      */
     public function test_edit_ticket_action()
+    {
+        $createTicketAction = app()->make(EditTicketAction::class);
+
+        $ticket = Ticket::factory()->passenger()->flight()->create();
+
+        $ticketData = TicketData::fromModel($ticket);
+
+        $originalSeatNumber = $ticket->seat_number;
+        $seatNumber = $ticket->flight->getRandomFreeSeat();
+
+        $ticketData->passenger = PassengerData::fromModel($ticket->passenger);
+        $ticketData->seat_number = $seatNumber;
+
+        $ticket = $createTicketAction->execute($ticket, $ticketData);
+
+        $this->assertNotNull($ticket);
+        $this->assertNotNull($ticket->uuid);
+
+        $this->assertTrue($ticket->flight->isSeatValid($ticket->seat_number));
+        $this->assertFalse($ticket->flight->isSeatAvailable($ticket->seat_number));
+        $this->assertTrue($ticket->flight->isSeatAvailable($originalSeatNumber));
+    }
+
+    /**
+     * @throws BindingResolutionException
+     * @throws NoAvailableSeatsException
+     */
+    public function test_cancel_ticket_action()
     {
         $createTicketAction = app()->make(EditTicketAction::class);
 
