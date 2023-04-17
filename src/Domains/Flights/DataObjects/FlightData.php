@@ -3,6 +3,7 @@
 namespace Domain\Flights\DataObjects;
 
 use App\Api\Requests\Bookings\CreateTicket;
+use DateTime;
 use Domain\Flights\Models\Flight;
 use Spatie\LaravelData\Attributes\WithTransformer;
 use Spatie\LaravelData\Data;
@@ -12,26 +13,13 @@ use Support\Helper;
 
 class FlightData extends Data
 {
-    /*
-     *
-            $table->string('flight_number')->primary();
-            $table->string('departure_airport');
-            $table->string('destination_airport');
-            $table->string('departure_time');
-            $table->string('arrival_time');
-            $table->integer('no_of_seats')->default(32);
-            $table->integer('price');
-            $table->string('airline');
-            $table->string('aircraft');
-            $table->string('flight_status');
-     */
     public function __construct(
         public ?string $uuid,
         public string $flight_number,
         public ?string $departure_airport,
         public ?string $destination_airport,
-        public ?string $departure_time,
-        public ?string $arrival_time,
+        public ?DateTime $departure_time,
+        public ?DateTime $arrival_time,
         public ?string $no_of_seats,
         public ?string $price,
         public ?string $airline,
@@ -39,8 +27,6 @@ class FlightData extends Data
         public ?string $flight_status,
     ) {
     }
-
-
 
     public static function fromModel(Flight $flight): self
     {
@@ -59,11 +45,8 @@ class FlightData extends Data
         );
     }
 
-    /*
-    public static function fromStoreRequest(CreateTicket $request)
+    public function toModel(): Flight
     {
-        return new self(
-        );
+        return Flight::whereFlightNumber($this->flight_number)->first();
     }
-    */
 }

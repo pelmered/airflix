@@ -7,7 +7,6 @@ storage/*.key
 
 # Cache
 .phpunit.result.cache
-/.phpunit.cache
 
 # .env
 .env
@@ -22,3 +21,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# IDE helper files
+.phpstorm.meta.php
+_ide_helper.php

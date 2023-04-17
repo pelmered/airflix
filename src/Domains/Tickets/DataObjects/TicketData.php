@@ -23,6 +23,9 @@ class TicketData extends Data
         public ?string $updated_at = null,
         public ?string $created_at = null,
     ) {
+        if (!$this->seat_number) {
+            $this->seat_number = $this->flight->toModel()->getRandomFreeSeat();
+        }
     }
 
     public static function rules()

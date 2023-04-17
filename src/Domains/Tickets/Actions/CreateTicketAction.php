@@ -20,6 +20,7 @@ class CreateTicketAction
      * @throws NotPersistedApiException
      * @throws NoAvailableSeatsException
      * @throws SeatNotAvailableException
+     * @throws SeatInvalidException
      */
     public function execute(TicketData $ticketData): Ticket
     {

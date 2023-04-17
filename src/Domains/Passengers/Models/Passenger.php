@@ -65,6 +65,11 @@ class Passenger extends Model
     // Allow mass assignment for all fields
     protected $guarded = [];
 
+    protected $casts = [
+        'passport_expiration_date' => 'datetime',
+        'passport_issuing_date'    => 'datetime',
+    ];
+
     public function tickets(): hasMany
     {
         return $this->hasMany(Ticket::class, 'uuid');
