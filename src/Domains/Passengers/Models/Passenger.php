@@ -14,6 +14,7 @@ use Support\Traits\Uuidable;
  * Domain\Passengers\Models\Passenger
  *
  * @property int $id
+ * @property string $uuid
  * @property string $name
  * @property string $personal_id_number
  * @property string $email
@@ -49,8 +50,6 @@ use Support\Traits\Uuidable;
  * @method static \Illuminate\Database\Eloquent\Builder|Passenger wherePersonalIdNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passenger wherePhoneNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Passenger whereUpdatedAt($value)
- * @property string $uuid
- * @property-read \Illuminate\Database\Eloquent\Collection<int, Ticket> $tickets
  * @method static \Illuminate\Database\Eloquent\Builder|Passenger whereUuid($value)
  * @mixin \Eloquent
  */
@@ -62,6 +61,9 @@ class Passenger extends Model
     public $incrementing = false; // or null
 
     protected $primaryKey = 'uuid';
+
+    // Allow mass assignment for all fields
+    protected $guarded = [];
 
     public function tickets(): hasMany
     {

@@ -19,6 +19,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+
+        Factory::guessFactoryNamesUsing(function (string $modelName) {
+            $re = '/Domain\\\\(?<domain>.+)\\\\Models\\\\(?<model>.+)/';
+
+            if (preg_match($re, $modelName, $matches, PREG_OFFSET_CAPTURE, 0)) {
+                $classPath = 'Database\Factories\\'.$matches['domain'][0].'\\'.$matches['model'][0].'Factory';
+                if (class_exists($classPath)) {
+                    return $classPath;
+                }
+            }
+
+            return 'Database\Factories\\'.class_basename($modelName).'Factory';
+        });
     }
 }
