@@ -1,33 +1,8 @@
 <?php
+
 namespace App;
 
-use App\Middleware\AccountAuthMiddleware;
-use App\Middleware\APIResponse;
-use App\Middleware\EncryptCookies;
-use App\Middleware\RedirectIfAuthenticated;
-use App\Middleware\RequestResponseLogger;
-use App\Middleware\SetLocale;
-use App\Middleware\StaticBasicAuth;
-use App\Middleware\TrimStrings;
-use App\Middleware\VerifyCsrfToken;
-use Domain\BankID\Middleware\RequireBankIDSignature;
-use Domain\LastActivity\Http\Middleware\LastActivityMiddleware;
-use Fruitcake\Cors\HandleCors;
-use Illuminate\Auth\Middleware\Authenticate;
-use Illuminate\Auth\Middleware\Authorize;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Foundation\Http\Kernel;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
-use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
-use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
-use Illuminate\Http\Middleware\SetCacheHeaders;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Routing\Middleware\ThrottleRequests;
-use Illuminate\Routing\Middleware\ValidateSignature;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Sentry\Laravel\Tracing\Middleware as SentryMiddleware;
-use Support\Integrations\Sentry\Middleware\SentryHttpContext;
 
 class HttpKernel extends Kernel
 {
