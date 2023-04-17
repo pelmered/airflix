@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "e74a89df-72e3-4f04-9cca-d7fa68de75f2",
+		"name": "AirFlix",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29581"
+	},
+	"item": [
+		{
+			"name": "Get tickets list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get ticket",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets/007b31a6-47b0-4e7f-b4df-aa5af0497933",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"007b31a6-47b0-4e7f-b4df-aa5af0497933"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create ticket",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"flight_number\": \"JO522\",\n    \"passenger_uuid\": \"d726af48-930a-4d09-9514-7ba3833b7138\",\n    \"seat_number\": 10000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel ticket",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets/0007cded-9192-48c8-b1d8-4a00176c23c5/cancel",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"0007cded-9192-48c8-b1d8-4a00176c23c5",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update ticket",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"seat_number\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets/0007cded-9192-48c8-b1d8-4a00176c23c5",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets",
+						"0007cded-9192-48c8-b1d8-4a00176c23c5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get flight",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/flights/EW583",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"flights",
+						"EW583"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get flights  list",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/flights",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"flights"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get available seats for flight",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://airflix.test/api/v1/flights/34917/available-seats",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"flights",
+						"34917",
+						"available-seats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get passengers list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://airflix.test/api/v1/tickets",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get passenger",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://airflix.test/api/v1/passengers/007b31a6-47b0-4e7f-b4df-aa5af0497933",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"passengers",
+						"007b31a6-47b0-4e7f-b4df-aa5af0497933"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update passenger",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"seat_number\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://airflix.test/api/v1/passengers/0007cded-9192-48c8-b1d8-4a00176c23c5",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"passengers",
+						"0007cded-9192-48c8-b1d8-4a00176c23c5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create passenger",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"personal_id_number\": \"19000101011111\",\n    \"name\": \"Name Nameson\",\n    \"email\": \"test@example.com\",\n    \"phone_number\": \"+46701111111\",\n    \"address\": \"Street 1\",\n    \"city\": \"Some City\",\n    \"country\": \"SE\",\n    \"nationality\": \"SE\",\n    \"passport_number\": \"SE\",\n    \"passport_expiration_date\": \"2030-01-01\",\n    \"passport_issuing_date\": \"2022-01-01\",\n    \"passport_issuing_country\": \"SE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://airflix.test/api/v1/passengers",
+					"protocol": "https",
+					"host": [
+						"airflix",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"passengers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
